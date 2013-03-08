@@ -16,6 +16,11 @@ app.config = {
     tc: {
         url: 'http://teamcity.enonic.net',
         interval: 60 * 1000  // 60 seconds
+    },
+
+    gravatar: {
+        url: 'https://secure.gravatar.com/avatar',
+        email_domain: 'enonic.com'
     }
 
 };
@@ -37,4 +42,5 @@ $(document).ready(function () {
 
     $('#broken-build-alert').addClass('animate');
 });
+
 
