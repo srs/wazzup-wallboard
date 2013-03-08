@@ -5,7 +5,7 @@ app = {};
 app.config = {
 
     display: {
-        interval: 10000
+        interval: 100000
     },
 
     yt: {
@@ -38,9 +38,11 @@ if (!$.cookie('auth_hash')) {
     app.config.yt.auth_hash = $.cookie('auth_hash');
 }
 
+/*
 $(document).ready(function () {
-
+     // Animate the build alert
     $('#broken-build-alert').addClass('animate');
 });
+*/
 
 
