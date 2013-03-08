@@ -42,7 +42,6 @@ app.data.tc = {
             var buildStatus = buildInfo.build[0];
 
             if (buildStatus.status != "SUCCESS") {
-                console.log("Build success, for id: " + buildStatus.id);
                 this.loadBrokenBuilds(buildInfo);
             }
         }
@@ -58,11 +57,12 @@ app.data.tc = {
             var changeId = relatedIssues.issueUsage[0].changes.change[0].id;
             var changeDetails = this.getJson('/app/rest/changes/id:' + changeId);
 
+            var changeTime = moment(changeDetails.date, 'YYYYMMDDTHHmmssZ');
 
             var brokenBuildInfo = {
                 id: changeDetails.username,
                 change: changeDetails.comment,
-                date: changeDetails.date
+                date: new Date(changeTime).getTime()
             }
 
             app.data.model.tc.builds.broken.push(brokenBuildInfo);
@@ -71,9 +71,6 @@ app.data.tc = {
 
     loadAgents: function () {
         var agentInfos = this.getJson("/app/rest/agents");
-
-        console.log(agentInfos);
-
         var agentCount = agentInfos.agent.length;
         var agentsRunning = 0;
         var agentsFailure = 0;
