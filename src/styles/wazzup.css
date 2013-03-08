@@ -6,6 +6,7 @@ body {
     color: #eee;
     padding: 0;
     margin: 0;
+    font-family: 'Open Sans', sans-serif;
 }
 
 h1 {
@@ -37,6 +38,7 @@ h1 {
 }
 
 .left {
+    background-color: #555;
     position: absolute;
     top: 0;
     right: 50%;
@@ -68,6 +70,10 @@ h1 {
     left: 0;
 }
 
+.info-container {
+    padding-top: 15%;
+}
+
 .left .number {
     font-size: 2200%;
 }
@@ -83,7 +89,7 @@ h1 {
 #broken-build-alert {
     position: fixed;
     right: 0;
-    bottom: -60px;
+    bottom: -61px;
     left: 0;
     text-align: center;
     background-color: orangered;
