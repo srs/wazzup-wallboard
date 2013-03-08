@@ -22,11 +22,11 @@ app.config = {
 
 // Enter password for youtrack
 if (!$.cookie('auth_hash')) {
-    app.config.yt.user = window.prompt("YouTrack User?", "");
-    app.config.yt.password = window.prompt("YouTrack Password?", "");
+    var ytUser = window.prompt("YouTrack User?", "");
+    var ytPassword = password = window.prompt("YouTrack Password?", "");
 
-    if (app.config.yt.user && app.config.yt.password) {
-        app.config.yt.auth_hash = $.base64.encode(app.config.yt.user + ':' + app.config.yt.password);
+    if (ytUser && ytPassword) {
+        app.config.yt.auth_hash = $.base64.encode(ytUser + ':' + ytPassword);
         $.cookie('auth_hash', app.config.yt.auth_hash);
     }
 } else {
