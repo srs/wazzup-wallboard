@@ -11,11 +11,19 @@ app.util = {
     },
 
     daysUntil: function (timestamp) {
-        // 3
+
+        var now = new Date().getTime();
+        var diff = timestamp - now;
+
+        if (diff <= 0) {
+            return 0;
+        }
+
+        return Math.round(diff / (24 * 60 * 60 * 1000));
     },
 
     timeSince: function (timestamp) {
-        // 2 hours
+        return moment(timestamp).fromNow();
     }
 
 };
