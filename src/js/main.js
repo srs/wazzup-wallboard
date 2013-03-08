@@ -15,7 +15,7 @@ app.config = {
 
     tc: {
         url: 'http://teamcity.enonic.net',
-        interval: 60 * 1000  // 60 seconds
+        interval: 30 * 1000  // 60 seconds
     },
 
     gravatar: {
