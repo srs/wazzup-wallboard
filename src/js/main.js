@@ -16,6 +16,11 @@ app.config = {
     tc: {
         url: 'http://teamcity.enonic.net',
         interval: 60 * 1000  // 60 seconds
+    },
+
+    gravatar: {
+        url: 'https://secure.gravatar.com/avatar',
+        email_domain: 'enonic.com'
     }
 
 };
@@ -32,3 +37,4 @@ if (!$.cookie('auth_hash')) {
 } else {
     app.config.yt.auth_hash = $.cookie('auth_hash');
 }
+
