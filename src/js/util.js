@@ -8,6 +8,14 @@ app.util = {
         url += '&d=retro';
 
         return url;
+    },
+
+    daysUntil: function (timestamp) {
+        // 3
+    },
+
+    timeSince: function (timestamp) {
+        // 2 hours
     }
 
 };
