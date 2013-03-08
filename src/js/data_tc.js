@@ -42,7 +42,6 @@ app.data.tc = {
             var buildStatus = buildInfo.build[0];
 
             if (buildStatus.status != "SUCCESS") {
-                console.log("Build success, for id: " + buildStatus.id);
                 this.loadBrokenBuilds(buildInfo);
             }
         }
@@ -72,9 +71,6 @@ app.data.tc = {
 
     loadAgents: function () {
         var agentInfos = this.getJson("/app/rest/agents");
-
-        console.log(agentInfos);
-
         var agentCount = agentInfos.agent.length;
         var agentsRunning = 0;
         var agentsFailure = 0;
