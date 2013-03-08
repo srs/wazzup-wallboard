@@ -58,11 +58,12 @@ app.data.tc = {
             var changeId = relatedIssues.issueUsage[0].changes.change[0].id;
             var changeDetails = this.getJson('/app/rest/changes/id:' + changeId);
 
+            var changeTime = moment(changeDetails.date, 'YYYYMMDDTHHmmssZ');
 
             var brokenBuildInfo = {
                 id: changeDetails.username,
                 change: changeDetails.comment,
-                date: changeDetails.date
+                date: new Date(changeTime).getTime()
             }
 
             app.data.model.tc.builds.broken.push(brokenBuildInfo);
