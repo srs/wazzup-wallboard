@@ -75,13 +75,19 @@ h1 {
 }
 
 .left .number {
-    font-size: 2200%;
+    font-size: 2400%;
 }
-.right-top .number {
-    font-size: 800%;
+.left .text {
+    font-size: 250%;
 }
+
+.right-top .number,
 .right-bottom .number {
     font-size: 800%;
+}
+.right-top .text,
+.right-bottom .text {
+    font-size: 190%;
 }
 
 /** Broken build alert */
