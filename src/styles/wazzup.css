@@ -2,7 +2,7 @@
 
 body {
     font: 100% Tahoma;
-    background-color: #1b3435;
+    background-color: #333333;
     color: #eee;
     padding: 0;
     margin: 0;
@@ -30,36 +30,40 @@ h1 {
     height: 100%;
     display: none;
 }
-
 .left {
     position: absolute;
     top: 0; right: 50%; bottom: 0; left: 0;
-    background-color: #1b3435;
 }
-
 .right {
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 50%;
-    background-color: #1b3435;
 }
-
 .right-top {
     position: absolute;
     top: 0; right: 0; bottom: 50%; left: 0;
-    background-color: #0b97c4;
-
 }
 .right-bottom {
-    background-color: #0f2a2c;
+    position: absolute;
+    top: 50%; right: 0; bottom: 0; left: 0;
+}
 
+.left, .right, .right-top, .right-bottom {
+    text-align: center;
 }
 
 #broken-build-alert {
-    position: absolute;
-    right:0; bottom: 0; left: 0;
+    position: fixed;
+    right: 0; bottom: -60px; left: 0;
+    text-align: center;
     background-color: orangered;
     color: #fff;
     padding: 20px;
     z-index: 100000;
+
+    -webkit-transition: bottom 2s;
+    transition: bottom 2s;
+}
+#broken-build-alert.animate {
+    bottom: 0;
 }
 

@@ -32,3 +32,9 @@ if (!$.cookie('auth_hash')) {
 } else {
     app.config.yt.auth_hash = $.cookie('auth_hash');
 }
+
+$(document).ready(function () {
+
+    $('#broken-build-alert').addClass('animate');
+});
+
