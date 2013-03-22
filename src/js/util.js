@@ -11,7 +11,7 @@ app.util = {
         url += '?size=500x500';
 
         if (app.config.gravatar.photo) {
-            url = '&gravatar=yes';
+            url += '&gravatar=yes';
         }
 
         return url;

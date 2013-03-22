@@ -10,6 +10,8 @@ app.display.ScreenRotator = {
     },
 
     showSprintInfo: function () {
+        app.data.yt.loadAll();
+        app.data.tc.loadAll();
 
         this.showBlamePopupIfNeeded();
         this.renderTemplate("sprintInfo", app.data.model);
@@ -17,13 +19,11 @@ app.display.ScreenRotator = {
     },
 
     showTasksInfo: function () {
-        this.showBlamePopupIfNeeded();
         this.renderTemplate("tasksInfo", app.data.model);
         this.delay(this.showBuildInfo);
     },
 
     showBuildInfo: function () {
-        this.showBlamePopupIfNeeded();
         this.renderTemplate("buildInfo", app.data.model);
         this.delay(this.showBrokenBuilds);
     },
@@ -32,7 +32,6 @@ app.display.ScreenRotator = {
         var me = this;
 
         if (app.data.model.tc.builds.broken.length > 0) {
-            me.showBlamePopupIfNeeded();
             me.showBrokenBuild(0);
         } else {
             this.showSprintInfo();

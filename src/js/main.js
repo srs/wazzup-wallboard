@@ -9,13 +9,11 @@ app.config = {
     },
 
     yt: {
-        url: 'https://youtrack.enonic.net',
-        interval: 10 * 60 * 1000  // 10 minutes
+        url: 'https://youtrack.enonic.net'
     },
 
     tc: {
         url: 'http://teamcity.enonic.net',
-        interval: 30 * 1000,  // 60 seconds
         mock_failure: true,
         mock_success_rate: 0.6
     },

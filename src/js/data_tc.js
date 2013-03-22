@@ -129,12 +129,3 @@ app.data.tc = {
     }
 }
 ;
-
-$(document).ready(function () {
-    app.data.tc.loadAll();
-
-    setInterval(function () {
-        app.data.tc.loadAll();
-    }, app.config.tc.interval);
-});
-

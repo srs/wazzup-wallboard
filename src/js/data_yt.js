@@ -29,8 +29,6 @@ app.data.yt = {
             sprint: sprint,
             status: status
         };
-
-        console.log(app.data.model.yt);
     },
 
     loadSprintData: function () {
@@ -148,11 +146,3 @@ app.data.yt = {
     }
 
 };
-
-$(document).ready(function () {
-    app.data.yt.loadAll();
-
-    setInterval(function () {
-        app.data.yt.loadAll();
-    }, app.config.yt.interval);
-});
