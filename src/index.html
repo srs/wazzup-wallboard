@@ -16,6 +16,7 @@
     <script type="text/javascript" src="lib/jquery/jquery.cookie.js"></script>
     <script type="text/javascript" src="lib/jquery/jquery.md5.js"></script>
     <script type="text/javascript" src="lib/moment.min.js"></script>
+    <script type="text/javascript" src="lib/handlebars.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/data.js"></script>
     <script type="text/javascript" src="js/data_tc.js"></script>
@@ -32,18 +33,21 @@
 
             <section class="left">
                 <div class="info-container">
-                    <div class="number">21</div> <div class="text">days left</div>
+                    <div class="number">21</div>
+                    <div class="text">days left</div>
                 </div>
             </section>
             <section class="right">
                 <section class="right-top">
                     <div class="info-container">
-                        <div class="number">200</div> <div class="text">points done</div>
+                        <div class="number">200</div>
+                        <div class="text">points done</div>
                     </div>
                 </section>
                 <section class="right-bottom">
                     <div class="info-container">
-                        <div class="number">100</div> <div class="text">issues resolved</div>
+                        <div class="number">100</div>
+                        <div class="text">issues resolved</div>
                     </div>
                 </section>
             </section>
@@ -61,6 +65,21 @@
         </div>
     </section>
 </div>
+
+<script id="template-sprintInfo" type="text/x-handlebars-template">
+</script>
+
+<script id="template-tasksInfo" type="text/x-handlebars-template">
+</script>
+
+<script id="template-buildInfo" type="text/x-handlebars-template">
+</script>
+
+<script id="template-brokenBuild" type="text/x-handlebars-template">
+</script>
+
+<script id="template-blamePopup" type="text/x-handlebars-template">
+</script>
 
 </body>
 </html>
