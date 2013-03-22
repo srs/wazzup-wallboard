@@ -30,7 +30,6 @@ app.data.model = {
     tc: {
         builds: {
             count: 8,
-            broken_count: 0,
             broken: [
                 {
                     project: 'Enonic CMS 5.x',
@@ -40,14 +39,7 @@ app.data.model = {
                         id: 'tsi',
                         name: 'Thomas Sigdestad'
                     }
-                },
-                {
-                    project: 'Enonic CMS 4.x',
-                    date: 1345542982077,
-                    change: 'CMS-44 Fixed something easy',
-                    id: 'tsi'
                 }
-
             ]
         },
         agents: {
@@ -56,25 +48,5 @@ app.data.model = {
             running: 2
         }
     }
-};
-
-// Declare TeamCity methods
-app.data.tc = {
-
-    // http://teamcity.enonic.net/guestAuth/app/rest/builds
-    // http://teamcity.enonic.net/guestAuth/app/rest/builds/id:103
-    // http://teamcity.enonic.net/guestAuth/app/rest/builds/id:103/statistics
-    // http://api.jquery.com/promise/
-    loadBuilds: function () {
-        $.getJSON(app.config.tc.url + '/guestAuth/app/rest/builds?locator=count:20', function (data) {
-            app.data.model.tc.builds = data;
-            $(window).trigger('loadBuild', app.data.model.tc.builds);
-        });
-    },
-
-    loadAll: function () {
-        this.loadBuilds();
-    }
-
 };
 

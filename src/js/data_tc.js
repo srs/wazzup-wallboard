@@ -20,7 +20,6 @@ app.data.tc = {
     loadAll: function () {
         this.loadBuildTypes();
         this.loadAgents();
-        //$(window).trigger('loadData');
     },
 
     loadBuildTypes: function () {
@@ -44,10 +43,10 @@ app.data.tc = {
             var buildStatus = buildInfo.build[0];
             var projectName = projects.buildType[i].projectName;
 
-            //if (buildStatus.status != "SUCCESS") {
-            this.loadBrokenBuilds(projectName, buildInfo);
-            numberOfBrokenBuilds++;
-            //}
+            if (buildStatus.status != "SUCCESS") {
+                this.loadBrokenBuilds(projectName, buildInfo);
+                numberOfBrokenBuilds++;
+            }
         }
 
         app.data.model.tc.builds.broken_count = numberOfBrokenBuilds;

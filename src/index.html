@@ -88,17 +88,10 @@
 <script id="template-buildInfo" type="text/x-handlebars-template">
     <div class="screen">
         <section class="left">
-            {{#if tc.builds.broken_count}}
-            <div class="info-container">
-                <div class="number">{{tc.builds.broken_count}}</div>
-                <div class="text">broken builds</div>
-            </div>
-            {{else}}
             <div class="info-container">
                 <div class="number">{{tc.builds.count}}</div>
                 <div class="text">builds</div>
             </div>
-            {{/if}}
         </section>
         <section class="right">
             <section class="right-top">
@@ -108,17 +101,10 @@
                 </div>
             </section>
             <section class="right-bottom">
-                {{#if tc.agents.failure}}
-                <div class="info-container">
-                    <div class="number">{{tc.agents.failure}}</div>
-                    <div class="text">agents failed</div>
-                </div>
-                {{else}}
                 <div class="info-container">
                     <div class="number">{{tc.agents.count}}</div>
                     <div class="text">agents</div>
                 </div>
-                {{/if}}
             </section>
         </section>
     </div>
