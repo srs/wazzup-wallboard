@@ -75,23 +75,9 @@ app.display.ScreenRotator = {
         } else {
             $('#blame-popup').removeClass('animate');
         }
-    },
-
-    showHeading: function (screenName) {
-        $('#heading-hover div').text(screenName);
     }
-
 };
 
 $(document).ready(function () {
-    // app.display.ScreenRotator.init();
-
-    /*var source = $("#template-sprintInfo").html();
-     var template = Handlebars.compile(source);
-     $("#screens").html(template(app.data.model));
-     */
-
     app.display.ScreenRotator.init();
-
-
 });
