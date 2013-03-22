@@ -55,6 +55,17 @@ app.data.tc = {
     loadBrokenBuilds: function (projectName, buildInfo) {
         var buildDetails = this.getJson('/app/rest/builds/id:' + buildInfo.build[0].id);
 
+        var changeTime = moment(buildDetails.startDate, 'YYYYMMDDTHHmmssZ');
+
+        var brokenBuildInfo = {
+            project: projectName,
+            broken_since: app.util.timeSince(new Date(changeTime).getTime())
+        }
+
+        if (buildDetails.triggered) {
+            brokenBuildInfo.id = buildDetails.triggered.user.username;
+        }
+
         var relatedIssues = buildDetails.relatedIssues;
 
         if (relatedIssues != null) {
@@ -62,19 +73,19 @@ app.data.tc = {
             var changeId = relatedIssues.issueUsage[0].changes.change[0].id;
             var changeDetails = this.getJson('/app/rest/changes/id:' + changeId);
 
-            var changeTime = moment(changeDetails.date, 'YYYYMMDDTHHmmssZ');
             var userId = changeDetails.username;
 
-            var brokenBuildInfo = {
-                project: projectName,
-                id: userId,
-                change: changeDetails.comment,
-                broken_since: app.util.timeSince(new Date(changeTime).getTime()),
-                blame_image: app.util.createGravatarUrl(userId)
-            }
-
-            app.data.model.tc.builds.broken.push(brokenBuildInfo);
+            brokenBuildInfo.change = changeDetails.comment;
+            brokenBuildInfo.blame_image = app.util.createGravatarUrl(userId);
+        } else {
+            brokenBuildInfo.change = "No change";
         }
+
+        if (brokenBuildInfo.id) {
+            brokenBuildInfo.blame_image = app.util.createGravatarUrl(brokenBuildInfo.id);
+        }
+
+        app.data.model.tc.builds.broken.push(brokenBuildInfo);
     },
 
     loadAgents: function () {
