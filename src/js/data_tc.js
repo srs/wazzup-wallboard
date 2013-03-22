@@ -95,10 +95,16 @@ app.data.tc = {
 
         app.data.model.tc.agents = {
             count: agentCount,
-            running: agentsRunning,
-            failures: agentsFailure
+            failures: agentsFailure,
+            running: this.getRunningBuilds()
         }
 
+        this.getRunningBuilds();
+    },
+
+    getRunningBuilds: function () {
+        var runningInfo = this.getJson("/app/rest/builds?locator=running:true")
+        return runningInfo.count;
     }
 }
 ;
