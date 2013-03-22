@@ -17,12 +17,14 @@ app.config = {
         url: 'http://teamcity.enonic.net',
         interval: 30 * 1000,  // 60 seconds
         mock_failure: true,
-        mock_success_rate: 0.8
+        mock_success_rate: 0.6
     },
 
     gravatar: {
-        url: 'https://secure.gravatar.com/avatar',
-        email_domain: 'enonic.com'
+        url: 'http://robohash.org',
+        email_domain: 'enonic.com',
+        photo: true,
+        unknown_id: '123456@enonic.com'
     }
 
 };
