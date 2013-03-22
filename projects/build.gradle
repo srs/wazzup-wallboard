@@ -1,0 +1,13 @@
+
+task task_success() {
+}
+
+task task_failure() {
+	doLast {
+		throw new RuntimeException();
+	}
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.4'
+}
