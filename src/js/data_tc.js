@@ -43,7 +43,12 @@ app.data.tc = {
             var buildStatus = buildInfo.build[0];
             var projectName = projects.buildType[i].projectName;
 
-            if (buildStatus.status != "SUCCESS") {
+            var success = buildStatus.status == "SUCCESS";
+            if (success && app.config.tc.mock_failure) {
+                success = Math.random() < app.config.tc.mock_success_rate;
+            }
+
+            if (!success) {
                 this.loadBrokenBuilds(projectName, buildInfo);
                 numberOfBrokenBuilds++;
             }
@@ -55,6 +60,7 @@ app.data.tc = {
     loadBrokenBuilds: function (projectName, buildInfo) {
         var buildDetails = this.getJson('/app/rest/builds/id:' + buildInfo.build[0].id);
 
+        console.log(buildInfo);
         var relatedIssues = buildDetails.relatedIssues;
 
         if (relatedIssues != null) {
