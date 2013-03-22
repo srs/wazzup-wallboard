@@ -5,7 +5,7 @@ app = {};
 app.config = {
 
     display: {
-        interval: 3000
+        interval: 10000
     },
 
     yt: {

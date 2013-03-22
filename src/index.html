@@ -37,6 +37,10 @@
 
 <script id="template-sprintInfo" type="text/x-handlebars-template">
     <div class="screen">
+        <header>
+            {{yt.sprint.name}}
+        </header>
+
         <section class="left">
             <div class="info-container">
                 <div class="number">{{yt.sprint.days_left}}</div>
@@ -62,6 +66,10 @@
 
 <script id="template-tasksInfo" type="text/x-handlebars-template">
     <div class="screen">
+        <header>
+            Tasks status
+        </header>
+
         <section class="left">
             <div class="info-container">
                 <div class="number">{{yt.status.pull_request.count}}</div>
@@ -87,6 +95,10 @@
 
 <script id="template-buildInfo" type="text/x-handlebars-template">
     <div class="screen">
+        <header>
+            Build overview
+        </header>
+
         <section class="left">
             <div class="info-container">
                 <div class="number">{{tc.builds.count}}</div>

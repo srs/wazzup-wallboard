@@ -10,6 +10,7 @@ app.display.ScreenRotator = {
     },
 
     showSprintInfo: function () {
+
         this.showBlamePopupIfNeeded();
         this.renderTemplate("sprintInfo", app.data.model);
         this.delay(this.showTasksInfo);
@@ -72,7 +73,12 @@ app.display.ScreenRotator = {
         } else {
             $('#blame-popup').removeClass('animate');
         }
+    },
+
+    showHeading: function (screenName) {
+        $('#heading-hover div').text(screenName);
     }
+
 };
 
 $(document).ready(function () {
