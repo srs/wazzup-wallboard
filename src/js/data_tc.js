@@ -68,7 +68,9 @@ app.data.tc = {
         }
 
         if (buildDetails.triggered) {
-            brokenBuildInfo.id = buildDetails.triggered.user.username;
+            if (buildDetails.triggered.user) {
+                brokenBuildInfo.id = buildDetails.triggered.user.username;
+            }
         }
 
         var relatedIssues = buildDetails.relatedIssues;

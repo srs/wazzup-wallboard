@@ -17,7 +17,7 @@ app.config = {
         url: 'http://teamcity.enonic.net',
         interval: 30 * 1000,  // 60 seconds
         mock_failure: true,
-        mock_success_rate: 0.6
+        mock_success_rate: 0.8
     },
 
     gravatar: {
