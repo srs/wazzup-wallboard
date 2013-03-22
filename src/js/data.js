@@ -6,7 +6,7 @@ app.data.model = {
     yt: {
         sprint: {
             name: 'Sprint 101',
-            release: 1345542982077
+            daysLeft: 10
         },
         status: {
             resolved: {
@@ -30,6 +30,7 @@ app.data.model = {
     tc: {
         builds: {
             count: 8,
+            broken_count: 0,
             broken: [
                 {
                     project: 'Enonic CMS 5.x',
@@ -39,7 +40,14 @@ app.data.model = {
                         id: 'tsi',
                         name: 'Thomas Sigdestad'
                     }
+                },
+                {
+                    project: 'Enonic CMS 4.x',
+                    date: 1345542982077,
+                    change: 'CMS-44 Fixed something easy',
+                    id: 'tsi'
                 }
+
             ]
         },
         agents: {

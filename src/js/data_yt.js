@@ -37,10 +37,11 @@ app.data.yt = {
         var now = new Date();
         var data = this.getJson('agile/CMS/sprints');
         var sprint = data.sprint[0];
+        var release = new Date(sprint.finish + ' ' + now.getFullYear()).getTime();
 
         return {
             name: sprint.name,
-            release: new Date(sprint.finish + ' ' + now.getFullYear()).getTime()
+            days_left: app.util.daysUntil(release)
         };
     },
 

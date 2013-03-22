@@ -35,19 +35,25 @@ app.data.tc = {
 
         app.data.model.tc.builds.count = projects.buildType.length;
 
+        var numberOfBrokenBuilds = 0;
+
         for (var i = 0; i < projects.buildType.length; i++) {
 
             var buildInfo = this.getJson('/app/rest/builds/?locator=buildType:' + projects.buildType[i].id + '&count=1');
 
             var buildStatus = buildInfo.build[0];
+            var projectName = projects.buildType[i].projectName;
 
-            if (buildStatus.status != "SUCCESS") {
-                this.loadBrokenBuilds(buildInfo);
-            }
+            //if (buildStatus.status != "SUCCESS") {
+            this.loadBrokenBuilds(projectName, buildInfo);
+            numberOfBrokenBuilds++;
+            //}
         }
+
+        app.data.model.tc.builds.broken_count = numberOfBrokenBuilds;
     },
 
-    loadBrokenBuilds: function (buildInfo) {
+    loadBrokenBuilds: function (projectName, buildInfo) {
         var buildDetails = this.getJson('/app/rest/builds/id:' + buildInfo.build[0].id);
 
         var relatedIssues = buildDetails.relatedIssues;
@@ -58,11 +64,14 @@ app.data.tc = {
             var changeDetails = this.getJson('/app/rest/changes/id:' + changeId);
 
             var changeTime = moment(changeDetails.date, 'YYYYMMDDTHHmmssZ');
+            var userId = changeDetails.username;
 
             var brokenBuildInfo = {
-                id: changeDetails.username,
+                project: projectName,
+                id: userId,
                 change: changeDetails.comment,
-                date: new Date(changeTime).getTime()
+                broken_since: app.util.timeSince(new Date(changeTime).getTime()),
+                blame_image: app.util.createGravatarUrl(userId)
             }
 
             app.data.model.tc.builds.broken.push(brokenBuildInfo);

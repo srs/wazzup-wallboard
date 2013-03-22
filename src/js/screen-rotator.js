@@ -1,47 +1,94 @@
 app.display = {};
 
+
 app.display.ScreenRotator = {
     timeoutId: -1,
     currentIdx: -1,
 
     init: function () {
-        this.next();
+        //this.showSprintInfo();
+        this.showBrokenBuilds();
     },
 
-    next: function () {
+    showSprintInfo: function () {
+        this.showBlamePopupIfNeeded();
+        //this.renderTemplate("sprintInfo", app.data.model);
+        //this.delay(this.showTasksInfo);
+    },
+
+    showTasksInfo: function () {
+        this.showBlamePopupIfNeeded();
+        this.renderTemplate("tasksInfo", app.data.model);
+        this.delay(this.showBuildInfo);
+    },
+
+    showBuildInfo: function () {
+        this.showBlamePopupIfNeeded();
+        this.renderTemplate("buildInfo", app.data.model);
+        this.delay(this.showBrokenBuilds);
+    },
+
+    showBrokenBuilds: function () {
         var me = this;
-        me.currentIdx++;
 
-        if (me.currentIdx === me.getAll().length) {
-            me.currentIdx = 0;
+        if (app.data.model.tc.builds.broken.length > 0) {
+            me.hideBlamePopup();
+            me.showBrokenBuild(0);
         }
-        me.displayScreen();
+    },
 
-		// Wait n seconds before displaying next
-        me.timeoutId = window.setTimeout(function () {
-            me.next();
+    showBrokenBuild: function (index) {
+        var me = this;
+
+        me.renderTemplate("brokenBuild", app.data.model.tc.builds.broken[index]);
+        index++;
+
+        if (index < app.data.model.tc.builds.broken.length) {
+            me.delay(function () {
+                me.showBrokenBuild(index);
+            });
+        } else {
+            me.delay(me.showSprintInfo);
+        }
+    },
+
+    renderTemplate: function (name, data) {
+        var source = $("#template-" + name).html();
+        var template = Handlebars.compile(source);
+        $("#screens").html(template(data));
+    },
+
+    delay: function (next) {
+        var me = this;
+        window.setTimeout(function () {
+            next.call(me);
         }, app.config.display.interval);
     },
 
-    displayScreen: function () {
-        var me = this;
-		var allScreens =  me.getAll();
-		
-        allScreens.each(function (i) {
-            if (i === me.currentIdx) {
-                $(this).css({'display': 'block', 'z-index': allScreens.length});
-            } else {
-                $(this).css({'display': 'none', 'z-index': i});
-            }
-        });
+    showBlamePopupIfNeeded: function () {
+        var brokenBuildsCount = app.data.model.tc.builds.broken.length;
+        if (brokenBuildsCount > 0) {
+            $('#blame-popup div').text(brokenBuildsCount + ' broken build(s)');
+            $('#blame-popup').addClass('animate');
+        } else {
+            this.hideBlamePopup();
+        }
     },
 
-	getAll: function () {
-        return $('#screens').children('.screen');
+    hideBlamePopup: function () {
+        $('#blame-popup').removeClass('animate');
     }
-
 };
 
 $(document).ready(function () {
+    // app.display.ScreenRotator.init();
+
+    /*var source = $("#template-sprintInfo").html();
+     var template = Handlebars.compile(source);
+     $("#screens").html(template(app.data.model));
+     */
+
     app.display.ScreenRotator.init();
+
+
 });

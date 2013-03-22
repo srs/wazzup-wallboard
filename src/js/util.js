@@ -1,13 +1,8 @@
 app.util = {
 
-    createGravatarUrl: function (user, size) {
+    createGravatarUrl: function (user) {
         var email = user + '@' + app.config.gravatar.email_domain;
-
-        var url = app.config.gravatar.url + '/' + $.md5(email);
-        url += '?size=' + size;
-        url += '&d=retro';
-
-        return url;
+        return app.config.gravatar.url + '/' + $.md5(email);
     },
 
     daysUntil: function (timestamp) {

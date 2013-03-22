@@ -27,39 +27,8 @@
 <body>
 
 <div id="main">
-    <section id="screens">
-
-        <div data-screen-id="tc" class="screen">
-
-            <section class="left">
-                <div class="info-container">
-                    <div class="number">21</div>
-                    <div class="text">days left</div>
-                </div>
-            </section>
-            <section class="right">
-                <section class="right-top">
-                    <div class="info-container">
-                        <div class="number">200</div>
-                        <div class="text">points done</div>
-                    </div>
-                </section>
-                <section class="right-bottom">
-                    <div class="info-container">
-                        <div class="number">100</div>
-                        <div class="text">issues resolved</div>
-                    </div>
-                </section>
-            </section>
-        </div>
-
-        <div data-screen-id="yt" class="screen">
-            <div>Another screen</div>
-        </div>
-
-    </section>
-
-    <section id="broken-build-alert">
+    <section id="screens"><!-- --></section>
+    <section id="blame-popup">
         <div>
             WEM-CE is broken!
         </div>
@@ -67,19 +36,113 @@
 </div>
 
 <script id="template-sprintInfo" type="text/x-handlebars-template">
+    <div class="screen">
+        <section class="left">
+            <div class="info-container">
+                <div class="number">{{yt.sprint.days_left}}</div>
+                <div class="text">days left</div>
+            </div>
+        </section>
+        <section class="right">
+            <section class="right-top">
+                <div class="info-container">
+                    <div class="number">{{yt.status.resolved.points}}</div>
+                    <div class="text">points done</div>
+                </div>
+            </section>
+            <section class="right-bottom">
+                <div class="info-container">
+                    <div class="number">{{yt.status.resolved.count}}</div>
+                    <div class="text">issues resolved</div>
+                </div>
+            </section>
+        </section>
+    </div>
 </script>
 
 <script id="template-tasksInfo" type="text/x-handlebars-template">
+    <div class="screen">
+        <section class="left">
+            <div class="info-container">
+                <div class="number">{{yt.status.pull_request.count}}</div>
+                <div class="text">pull request</div>
+            </div>
+        </section>
+        <section class="right">
+            <section class="right-top">
+                <div class="info-container">
+                    <div class="number">{{yt.status.in_progress.count}}</div>
+                    <div class="text">in progress</div>
+                </div>
+            </section>
+            <section class="right-bottom">
+                <div class="info-container">
+                    <div class="number">{{yt.status.open.count}}</div>
+                    <div class="text">open</div>
+                </div>
+            </section>
+        </section>
+    </div>
 </script>
 
 <script id="template-buildInfo" type="text/x-handlebars-template">
+    <div class="screen">
+        <section class="left">
+            {{#if tc.builds.broken_count}}
+            <div class="info-container">
+                <div class="number">{{tc.builds.broken_count}}</div>
+                <div class="text">broken builds</div>
+            </div>
+            {{else}}
+            <div class="info-container">
+                <div class="number">{{tc.builds.count}}</div>
+                <div class="text">builds</div>
+            </div>
+            {{/if}}
+        </section>
+        <section class="right">
+            <section class="right-top">
+                <div class="info-container">
+                    <div class="number">{{tc.agents.running}}</div>
+                    <div class="text">running</div>
+                </div>
+            </section>
+            <section class="right-bottom">
+                {{#if tc.agents.failure}}
+                <div class="info-container">
+                    <div class="number">{{tc.agents.failure}}</div>
+                    <div class="text">agents failed</div>
+                </div>
+                {{else}}
+                <div class="info-container">
+                    <div class="number">{{tc.agents.count}}</div>
+                    <div class="text">agents</div>
+                </div>
+                {{/if}}
+            </section>
+        </section>
+    </div>
 </script>
 
 <script id="template-brokenBuild" type="text/x-handlebars-template">
+    <div class="screen">
+        <section class="top-left">
+            <div class="project-name">{{project}}</div>
+            <div class="broken-since">broken {{broken_since}}</div>
+        </section>
+        <section class="top-right">
+        </section>
+
+        <section class="bottom-left">
+            <div class="change">{{change}} ({{id}})</div>
+        </section>
+        <section class="bottom-right">
+        </section>
+
+        <div class="blame-image" style="background: transparent url({{blame_image}}?d=retro&size=500) no-repeat center right;"></div>
+    </div>
 </script>
 
-<script id="template-blamePopup" type="text/x-handlebars-template">
-</script>
 
 </body>
 </html>

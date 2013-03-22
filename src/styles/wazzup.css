@@ -23,6 +23,67 @@ h1 {
 
 /** Screen */
 
+.top-left {
+    background-color: #555;
+    position: absolute;
+    top: 0;
+    right: 50%;
+    bottom: 50%;
+    left: 0;
+    text-align: center;
+}
+
+.project-name {
+    margin-top: 10%;
+    font-size: 600%;
+}
+.broken-since {
+    font-size: 180%;
+}
+
+.top-right {
+    background-color: #555;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 50%;
+    left: 50%;
+}
+
+.bottom-left {
+    background-color: #333;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    bottom: 0;
+    left: 0;
+}
+
+.bottom-right {
+    background-color: #333;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    bottom: 0;
+    left: 50%;
+}
+
+.change {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    font-size: 200%;
+}
+
+.blame-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+}
+
+
 .screen {
     position: absolute;
     top: 0;
@@ -30,7 +91,7 @@ h1 {
     bottom: 0;
     left: 0;
     height: 100%;
-    display: none;
+    display: block;
 }
 
 .left, .right, .right-top, .right-bottom {
@@ -92,22 +153,23 @@ h1 {
 
 /** Broken build alert */
 
-#broken-build-alert {
+#blame-popup {
     position: fixed;
     right: 0;
-    bottom: -61px;
+    bottom: -80px;
     left: 0;
     text-align: center;
-    background-color: orangered;
+    background-color: red;
     color: #fff;
     padding: 20px;
     z-index: 100000;
+    font-size: 140%;
 
     -webkit-transition: bottom .3s;
     transition: bottom .3s;
 }
 
-#broken-build-alert.animate {
+#blame-popup.animate {
     bottom: 0;
 }
 
