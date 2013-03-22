@@ -6,8 +6,7 @@ app.display.ScreenRotator = {
     currentIdx: -1,
 
     init: function () {
-        // this.showSprintInfo();
-        this.showBrokenBuilds();
+        this.showSprintInfo();
     },
 
     showSprintInfo: function () {
