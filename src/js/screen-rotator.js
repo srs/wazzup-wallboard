@@ -6,14 +6,13 @@ app.display.ScreenRotator = {
     currentIdx: -1,
 
     init: function () {
-        //this.showSprintInfo();
-        this.showBrokenBuilds();
+        this.showSprintInfo();
     },
 
     showSprintInfo: function () {
         this.showBlamePopupIfNeeded();
-        //this.renderTemplate("sprintInfo", app.data.model);
-        //this.delay(this.showTasksInfo);
+        this.renderTemplate("sprintInfo", app.data.model);
+        this.delay(this.showTasksInfo);
     },
 
     showTasksInfo: function () {
@@ -32,7 +31,7 @@ app.display.ScreenRotator = {
         var me = this;
 
         if (app.data.model.tc.builds.broken.length > 0) {
-            me.hideBlamePopup();
+            me.showBlamePopupIfNeeded();
             me.showBrokenBuild(0);
         }
     },
@@ -71,12 +70,8 @@ app.display.ScreenRotator = {
             $('#blame-popup div').text(brokenBuildsCount + ' broken build(s)');
             $('#blame-popup').addClass('animate');
         } else {
-            this.hideBlamePopup();
+            $('#blame-popup').removeClass('animate');
         }
-    },
-
-    hideBlamePopup: function () {
-        $('#blame-popup').removeClass('animate');
     }
 };
 
