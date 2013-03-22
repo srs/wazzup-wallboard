@@ -71,16 +71,19 @@ h1 {
 .change {
     position: absolute;
     top: 10%;
-    left: 10%;
     font-size: 200%;
+    text-align: center;
 }
 
 .blame-image {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 0;
+    bottom: 0;
+    right: 50px;
     width: 500px;
     height: 500px;
+
+    margin: auto;
 }
 
 
