@@ -34,6 +34,8 @@ app.display.ScreenRotator = {
         if (app.data.model.tc.builds.broken.length > 0) {
             me.showBlamePopupIfNeeded();
             me.showBrokenBuild(0);
+        } else {
+            this.showSprintInfo();
         }
     },
 
