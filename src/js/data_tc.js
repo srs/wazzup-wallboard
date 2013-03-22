@@ -90,6 +90,9 @@ app.data.tc = {
 
         if (brokenBuildInfo.id) {
             brokenBuildInfo.blame_image = app.util.createGravatarUrl(brokenBuildInfo.id);
+        } else {
+            brokenBuildInfo.id = "unknown";
+            brokenBuildInfo.blame_image = app.util.createGravatarUrl("unknown1");
         }
 
         app.data.model.tc.builds.broken.push(brokenBuildInfo);
