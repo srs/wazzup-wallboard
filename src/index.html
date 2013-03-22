@@ -41,25 +41,23 @@
             {{yt.sprint.name}}
         </header>
 
-        <section class="left">
+        <section class="left light">
             <div class="info-container">
                 <div class="number">{{yt.sprint.days_left}}</div>
                 <div class="text">days left</div>
             </div>
         </section>
-        <section class="right">
-            <section class="right-top">
-                <div class="info-container">
-                    <div class="number">{{yt.status.resolved.points}}</div>
-                    <div class="text">points done</div>
-                </div>
-            </section>
-            <section class="right-bottom">
-                <div class="info-container">
-                    <div class="number">{{yt.status.resolved.count}}</div>
-                    <div class="text">issues resolved</div>
-                </div>
-            </section>
+        <section class="top-right dark">
+            <div class="info-container">
+                <div class="number">{{yt.status.resolved.points}}</div>
+                <div class="text">points done</div>
+            </div>
+        </section>
+        <section class="bottom-right dark">
+            <div class="info-container">
+                <div class="number">{{yt.status.resolved.count}}</div>
+                <div class="text">issues resolved</div>
+            </div>
         </section>
     </div>
 </script>
@@ -70,25 +68,23 @@
             Tasks status
         </header>
 
-        <section class="left">
+        <section class="left light">
             <div class="info-container">
                 <div class="number">{{yt.status.pull_request.count}}</div>
                 <div class="text">pull request</div>
             </div>
         </section>
-        <section class="right">
-            <section class="right-top">
-                <div class="info-container">
-                    <div class="number">{{yt.status.in_progress.count}}</div>
-                    <div class="text">in progress</div>
-                </div>
-            </section>
-            <section class="right-bottom">
-                <div class="info-container">
-                    <div class="number">{{yt.status.open.count}}</div>
-                    <div class="text">open</div>
-                </div>
-            </section>
+        <section class="top-right dark">
+            <div class="info-container">
+                <div class="number">{{yt.status.in_progress.count}}</div>
+                <div class="text">in progress</div>
+            </div>
+        </section>
+        <section class="bottom-right dark">
+            <div class="info-container">
+                <div class="number">{{yt.status.open.count}}</div>
+                <div class="text">open</div>
+            </div>
         </section>
     </div>
 </script>
@@ -99,42 +95,40 @@
             Build overview
         </header>
 
-        <section class="left">
+        <section class="left light">
             <div class="info-container">
                 <div class="number">{{tc.builds.count}}</div>
                 <div class="text">builds</div>
             </div>
         </section>
-        <section class="right">
-            <section class="right-top">
-                <div class="info-container">
-                    <div class="number">{{tc.agents.running}}</div>
-                    <div class="text">builds running</div>
-                </div>
-            </section>
-            <section class="right-bottom">
-                <div class="info-container">
-                    <div class="number">{{tc.agents.count}}</div>
-                    <div class="text">agents enabled</div>
-                </div>
-            </section>
+        <section class="top-right dark">
+            <div class="info-container">
+                <div class="number">{{tc.agents.running}}</div>
+                <div class="text">builds running</div>
+            </div>
+        </section>
+        <section class="bottom-right dark">
+            <div class="info-container">
+                <div class="number">{{tc.agents.count}}</div>
+                <div class="text">agents</div>
+            </div>
         </section>
     </div>
 </script>
 
 <script id="template-brokenBuild" type="text/x-handlebars-template">
     <div class="screen">
-        <section class="top-left">
+        <section class="top-left light">
             <div class="project-name">{{project}}</div>
             <div class="broken-since">broken {{broken_since}}</div>
         </section>
-        <section class="top-right">
+        <section class="top-right light">
         </section>
 
-        <section class="bottom-left">
+        <section class="bottom-left dark">
             <div class="change">{{change}} ({{id}})</div>
         </section>
-        <section class="bottom-right">
+        <section class="bottom-right dark">
         </section>
 
         <div class="blame-image" style="background: transparent url({{blame_image}}?d=retro&size=500) no-repeat center right;"></div>

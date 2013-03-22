@@ -9,11 +9,6 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-h1 {
-    font-size: 140%;
-}
-
-
 header {
     position: absolute;
     top: 20px;
@@ -23,7 +18,7 @@ header {
     background: #333;
     text-align: right;
     font-size: 125%;
-    padding: 10px;
+    padding: 10px 20px;
 }
 
 #screens {
@@ -34,10 +29,34 @@ header {
     left: 0;
 }
 
-/** Screen */
+.screen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    display: block;
+}
+
+
+.left {
+    position: absolute;
+    top: 0;
+    right: 50%;
+    bottom: 0;
+    left: 0;
+}
+
+.right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 50%;
+}
 
 .top-left {
-    background-color: #555;
     position: absolute;
     top: 0;
     right: 50%;
@@ -46,16 +65,7 @@ header {
     text-align: center;
 }
 
-.project-name {
-    margin-top: 10%;
-    font-size: 600%;
-}
-.broken-since {
-    font-size: 180%;
-}
-
 .top-right {
-    background-color: #555;
     position: absolute;
     top: 0;
     right: 0;
@@ -64,7 +74,6 @@ header {
 }
 
 .bottom-left {
-    background-color: #333;
     position: absolute;
     top: 50%;
     right: 50%;
@@ -73,12 +82,27 @@ header {
 }
 
 .bottom-right {
-    background-color: #333;
     position: absolute;
     top: 50%;
     right: 0;
     bottom: 0;
     left: 50%;
+}
+
+.light {
+    background-color: #555;
+}
+
+.dark {
+    background-color: #333;
+}
+
+.project-name {
+    margin-top: 10%;
+    font-size: 600%;
+}
+.broken-since {
+    font-size: 180%;
 }
 
 .change {
@@ -99,52 +123,8 @@ header {
     margin: auto;
 }
 
-
-.screen {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    display: block;
-}
-
-.left, .right, .right-top, .right-bottom {
+.left, .right, top-left, .top-right, .bottom-left, .bottom-right {
     text-align: center;
-}
-
-.left {
-    background-color: #555;
-    position: absolute;
-    top: 0;
-    right: 50%;
-    bottom: 0;
-    left: 0;
-}
-
-.right {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 50%;
-}
-
-.right-top {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 50%;
-    left: 0;
-}
-
-.right-bottom {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    bottom: 0;
-    left: 0;
 }
 
 .info-container {
@@ -154,20 +134,19 @@ header {
 .left .number {
     font-size: 2400%;
 }
+
 .left .text {
     font-size: 250%;
 }
 
-.right-top .number,
-.right-bottom .number {
+.top-right .number,
+.bottom-right .number {
     font-size: 800%;
 }
-.right-top .text,
-.right-bottom .text {
+.top-right .text,
+.bottom-right .text {
     font-size: 190%;
 }
-
-/** Broken build alert */
 
 #blame-popup {
     position: fixed;
@@ -188,6 +167,4 @@ header {
 #blame-popup.animate {
     bottom: 0;
 }
-
-
 
